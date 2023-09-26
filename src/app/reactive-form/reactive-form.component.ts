@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { FormControl, FormArray } from '@angular/forms';
-import { UserForm } from '../models/user-form.model';
+import { FormArray } from '@angular/forms';
 import { minDateValidator } from '../validators/minDateValidator';
 
 @Component({

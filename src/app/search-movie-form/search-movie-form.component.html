@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="movieForm">
+    <div formGroupName="movieTitleOrId">
+        <div>
+            <label for="identifiant-movie">Identifiant</label>
+            <input name="identifiant-movie" type="text" formControlName="identifiant">
+        </div>
+        <div>
+            <label for="title-order">Titre</label>
+            <input name="title-order" type="text" formControlName="title">
+        </div>
+        <div *ngIf="movieForm.get('movieTitleOrId')?.hasError('required', ['identifiant', 'title'])">
+            <span>L'un des deux champs Identifiant ou Titre doit être renseigné</span>
+        </div>
+    </div>
+    <button type="reset">Restaurer</button>
+    <button type="submit" [disabled]="!movieForm.valid">Sauvegarder</button>
+</form>
