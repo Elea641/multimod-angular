@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { isRequiredValidator } from '../validators/isRequiredValidator';
+import { rangeDateValidator } from '../validators/rangeDateValidator';
 
 @Component({
   selector: 'app-search-movie-form',
@@ -8,19 +10,39 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SearchMovieFormComponent {
 
-  constructor(private fb: FormBuilder){}
+  submitted = false; 
+  
+  constructor(private fb: FormBuilder) {}
 
-  movieForm  = this.fb.group({
-  movieTitleOrId: this.fb.group({
-    identifiant: [''],
-    title: [''],
-  }),
-  type: [''],
-  releaseDate: [''],
-  form: [''],
-});
+  ngOnInit () {
+    this.movieForm.patchValue({
+      format: 'courte'
+    });
+  }
 
-onSubmit() {
-  console.log(this.movieForm.value);
-}
+  movieForm = this.fb.group({
+    movieTitleOrId: this.fb.group({
+      identifiant: ['', isRequiredValidator('title', 'identifiant')],
+      title: ['', isRequiredValidator('title', 'identifiant')],
+    }, { validators: this.validateTitleOrId }),
+    type: ['série', Validators.required],
+    releaseDate: ['', rangeDateValidator(1900, 2030)],
+    format: ['', Validators.required],
+  });
+
+  validateTitleOrId(group: FormGroup) {
+    const identifiant = group.get('identifiant')?.value;
+    const title = group.get('title')?.value;
+
+    if (!identifiant && !title) {
+      return { required: true };
+    }
+
+    return null;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.movieForm.value);
+  }
 }
