@@ -1,0 +1,23 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Mail:
+      <input type="email" formControlName="email">
+      <div *ngIf="registerForm.get('email')?.errors && !registerForm.get('email')?.pristine" class="error-msg">
+        <div [hidden]="!registerForm.get('email')?.errors?.['required']">Email is required.</div>
+        <div [hidden]="!registerForm.get('email')?.invalid">Email is invalid.</div>
+      </div>
+    </label>
+  </div>
+  <div>
+    <label>
+      Password:
+      <input type="password" formControlName="password">
+      <div *ngIf="registerForm.get('password')?.errors && !registerForm.get('password')?.pristine" class="error-msg">
+        <div [hidden]="!registerForm.get('password')?.errors?.['required']">Password is required.</div>
+        <div [hidden]="!registerForm.get('password')?.invalid">Password is invalid.</div>
+      </div>
+    </label>
+  </div>
+  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+</form>
