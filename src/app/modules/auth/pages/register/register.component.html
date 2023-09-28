@@ -12,10 +12,22 @@
   <div>
     <label>
       Password:
-      <input type="password" formControlName="password">
+      <input type="text" formControlName="password">
       <div *ngIf="registerForm.get('password')?.errors && !registerForm.get('password')?.pristine" class="error-msg">
         <div [hidden]="!registerForm.get('password')?.errors?.['required']">Password is required.</div>
         <div [hidden]="!registerForm.get('password')?.invalid">Password is invalid.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingSpecialCharacter']">Password must contain at least one special character.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingLowercaseCharacter']">Password must contain at least one lowercase character.</div>
+      </div>
+    </label>
+  </div>
+  <div>
+    <label>
+      Confirm Password:
+      <input type="text" formControlName="confirmPassword">
+      <div *ngIf="registerForm.get('confirmPassword')?.errors && !registerForm.get('confirmPassword')?.pristine" class="error-msg">
+        <div [hidden]="!registerForm.get('confirmPassword')?.errors?.['required']">ConfirmPassword is required.</div>
+        <div [hidden]="!registerForm.get('confirmPassword')?.invalid">ConfirmPassword is invalid.</div>
       </div>
     </label>
   </div>
