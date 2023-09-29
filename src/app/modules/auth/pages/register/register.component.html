@@ -15,9 +15,12 @@
       <input type="text" formControlName="password">
       <div *ngIf="registerForm.get('password')?.errors && !registerForm.get('password')?.pristine" class="error-msg">
         <div [hidden]="!registerForm.get('password')?.errors?.['required']">Password is required.</div>
-        <div [hidden]="!registerForm.get('password')?.invalid">Password is invalid.</div>
+        <!-- <div [hidden]="!registerForm.get('password')?.invalid">Password is invalid.</div> -->
         <div [hidden]="!registerForm.get('password')?.errors?.['missingSpecialCharacter']">Password must contain at least one special character.</div>
         <div [hidden]="!registerForm.get('password')?.errors?.['missingLowercaseCharacter']">Password must contain at least one lowercase character.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingUppercaseCharacter']">Password must contain at least one uppercase character.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingNumber']">Password must contain at least one number.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingNumber']">Password must contain at least minimum 8 character.</div>
       </div>
     </label>
   </div>
