@@ -10,7 +10,7 @@ export function passwordValidator(control: AbstractControl): ValidationErrors | 
     } 
   }
 
-  //checkRegex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/, 'invalidPassword');
+  checkRegex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/, 'invalidPassword');
   checkRegex(/[@$!%*?&#]/, 'missingSpecialCharacter');
   checkRegex(/[a-z]/, 'missingLowercaseCharacter');
   checkRegex(/[A-Z]/, 'missingUppercaseCharacter');

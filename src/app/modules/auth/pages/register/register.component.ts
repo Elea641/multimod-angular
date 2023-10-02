@@ -18,7 +18,7 @@ export class RegisterComponent {
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, emailValidator]),
     password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8), passwordValidator])),
-    confirm_password: new FormControl('', [Validators.required]),
+    confirm_password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8), passwordValidator])),
   }, 
   [
     checkEqualityPasswordValidator('password', 'confirm_password') 
@@ -28,10 +28,10 @@ export class RegisterComponent {
   constructor(public authService: AuthServiceService) {}
 
   ngOnInit (): void {
-    this.authService.getUsers().subscribe(usersList => {
-      this.users = usersList;
-      console.log("listuser",this.users);
-    })
+    // this.authService.getUsers().subscribe(usersList => {
+    //   this.users = usersList;
+    //   console.log("listuser",this.users);
+    // })
   }
 
   onSubmit() {
