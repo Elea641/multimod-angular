@@ -1,0 +1,18 @@
+@import '../../../../assets/style/variables.scss';
+
+nav {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    border-bottom: $border-color solid 1px;
+    padding: 0.5rem;
+
+    ul {
+        display: flex;
+
+        li {
+            padding: 0 1rem;
+        }
+    }
+}
+
