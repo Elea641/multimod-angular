@@ -1,0 +1,15 @@
+@import '../../../../../assets/style/variables.scss';
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        padding: 1rem;
+    }
+}

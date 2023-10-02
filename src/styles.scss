@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/style/variables.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h1, a {
+    color: $text-color;
+  }
+
+  .button-primary {
+    background-color: $button-color;
+    color: $text-button-color;
+    width: 50%;
+  }
+
+
+  // .flex-container {
+  //   display: flex;
+
+  // }
+
+  // .flex-container-column {
+  //   display: flex;
+  //   flex-direction: column;
+  //   width: 60%;
+  // }

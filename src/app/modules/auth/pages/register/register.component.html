@@ -1,17 +1,14 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex-container-column">
   <div>
-    <label>
-      Mail:
+    <label>Mail:</label>
       <input type="email" formControlName="email">
       <div *ngIf="registerForm.get('email')?.errors && !registerForm.get('email')?.pristine" class="error-msg">
         <div [hidden]="!registerForm.get('email')?.errors?.['required']">Email is required.</div>
         <div [hidden]="!registerForm.get('email')?.invalid">Email is invalid.</div>
       </div>
-    </label>
   </div>
   <div>
-    <label>
-      Password:
+    <label>Password:</label>
       <input type="text" formControlName="password">
       <div *ngIf="registerForm.get('password')?.errors && !registerForm.get('password')?.pristine" class="error-msg">
         <div [hidden]="!registerForm.get('password')?.errors?.['required']">Password is required.</div>
@@ -22,11 +19,9 @@
         <div [hidden]="!registerForm.get('password')?.errors?.['missingNumber']">Password must contain at least one number.</div>
         <div [hidden]="!registerForm.get('password')?.hasError('minlength')">Password must contain at least 8 characters.</div>
       </div>
-    </label>
   </div>
   <div>
-    <label>
-      Confirm Password:
+    <label>Confirm Password:</label>
       <input type="text" formControlName="confirm_password">
       <div *ngIf="registerForm.get('confirm_password')?.errors && !registerForm.get('confirm_password')?.pristine" class="error-msg">
         <div [hidden]="!registerForm.get('confirm_password')?.errors?.['required']">Password is required.</div>
@@ -37,10 +32,9 @@
         <div [hidden]="!registerForm.get('confirm_password')?.errors?.['missingNumber']">Password must contain at least one number.</div>
         <div [hidden]="!registerForm.get('confirm_password')?.hasError('minlength')">Password must contain at least 8 characters.</div>
       </div>
-    </label>
   </div>
   <div *ngIf="registerForm.hasError('notEqual')">
     Passwords do not match.
   </div>
-  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+  <button class="button-primary" type="submit" [disabled]="!registerForm.valid">Submit</button>
 </form>
