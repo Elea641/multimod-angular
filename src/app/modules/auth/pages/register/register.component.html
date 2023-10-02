@@ -27,10 +27,10 @@
   <div>
     <label>
       Confirm Password:
-      <input type="text" formControlName="confirmPassword">
-      <div *ngIf="registerForm.get('confirmPassword')?.errors && !registerForm.get('confirmPassword')?.pristine" class="error-msg">
-        <div [hidden]="!registerForm.get('confirmPassword')?.errors?.['required']">ConfirmPassword is required.</div>
-        <div [hidden]="!registerForm.get('confirmPassword')?.invalid">ConfirmPassword is invalid.</div>
+      <input type="text" formControlName="confirm_password">
+      <div *ngIf="registerForm.get('confirm_password')?.errors && !registerForm.get('confirm_password')?.pristine" class="error-msg">
+        <div [hidden]="!registerForm.get('confirm_password')?.errors?.['required']">ConfirmPassword is required.</div>
+        <div [hidden]="!registerForm.get('confirm_password')?.invalid">ConfirmPassword is invalid.</div>
       </div>
     </label>
   </div>
