@@ -17,7 +17,7 @@ export class RegisterComponent {
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, emailValidator]),
-    password: new FormControl('', Validators.compose([Validators.required, passwordValidator])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8), passwordValidator])),
     confirm_password: new FormControl('', [Validators.required]),
   }, 
   [
@@ -45,6 +45,7 @@ export class RegisterComponent {
       password: this.registerForm.get('password')?.value ?? '',
       confirm_password: this.registerForm.get('confirm_password')?.value ?? '',
     };
+
     this.authService.postUser(signIn).subscribe(response => {
       console.log('Réponse de la requête:', response);
       

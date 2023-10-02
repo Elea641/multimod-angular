@@ -29,8 +29,13 @@
       Confirm Password:
       <input type="text" formControlName="confirm_password">
       <div *ngIf="registerForm.get('confirm_password')?.errors && !registerForm.get('confirm_password')?.pristine" class="error-msg">
-        <div [hidden]="!registerForm.get('confirm_password')?.errors?.['required']">ConfirmPassword is required.</div>
-        <div [hidden]="!registerForm.get('confirm_password')?.invalid">ConfirmPassword is invalid.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['required']">Password is required.</div>
+        <!-- <div [hidden]="!registerForm.get('password')?.invalid">Password is invalid.</div> -->
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingSpecialCharacter']">Password must contain at least one special character.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingLowercaseCharacter']">Password must contain at least one lowercase character.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingUppercaseCharacter']">Password must contain at least one uppercase character.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingNumber']">Password must contain at least one number.</div>
+        <div [hidden]="!registerForm.get('password')?.errors?.['missingNumber']">Password must contain at least minimum 8 character.</div>
       </div>
     </label>
   </div>
